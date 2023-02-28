@@ -1,20 +1,22 @@
+const lista=[];
+const max = 0;
 document.addEventListener("DOMContentLoaded",()=>{
-    document.getElementById("gomb").addEventListener("click",function(){
+    document.getElementById("Hozzaad").addEventListener("click",function(){
         const input1=document.getElementById("input1").value;
-        const input2=document.getElementById("input2").value;
-        const visszajelzes = document.getElementById("visszajelzes")
-        visszajelzes.innerHTML=nagyobb(input1,input2)
-    })
-})
+        lista.push(input1)
+    });
+    document.getElementById("kiIr").addEventListener("click",function(){
+        document.getElementById("visszajelzes").innerHTML="A legnagyobb szám a felsorolásból: "+melyiknagyobb(lista,max)
+    });
+});
 
-function melyiknagyobb(szam1,szam2) {
-    if (szam1>szam2) {
-        return "Az első szám a nagyobb"+szam1
+function melyiknagyobb(lista,max) {
+    max=0
+    for (let index = 0; index<lista.length;index++){
+        const element=lista[index];
+        if (element>max){
+            max=element
+        }
     }
-    else if (szam1<szam2) {
-        return "A második szám a nagyobb"+szam2
-    }
-    else {
-        return "A két szám egyenlő"
-    }
+    return max
 }
